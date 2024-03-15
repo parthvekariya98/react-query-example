@@ -39,8 +39,7 @@ const TaskList = () => {
   const handleAddTask = async () => {
     if (!newTaskTitle.trim()) return;
     await addTaskMutation.mutateAsync({
-      title: newTaskTitle,
-      completed: false,
+      title: newTaskTitle
     });
     setNewTaskTitle('');
   };
@@ -65,7 +64,7 @@ const TaskList = () => {
       <ul>
         {tasks.map((task) => (
           <li key={task.id}>
-            <span style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>{task.title}</span>
+            <span>{task.title}</span>
             <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
           </li>
         ))}
